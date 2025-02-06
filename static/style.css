@@ -1,0 +1,234 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    background-color: #9F7BA9;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #770366;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #f89beb;
+}
+
+/* Body background */
+body {
+    font-family: Arial, sans-serif;
+    background: url("/static/rollerskates.jpg") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 80px;
+    text-align: center;
+    color: #333;
+    position: relative;
+}
+
+/* Full-screen blurred white overlay */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(15px); /* Blurred effect */
+    -webkit-backdrop-filter: blur(15px); /* Safari support */
+    z-index: -1; /* Keep it behind other elements */
+}
+
+/* Form container */
+.form-container {
+    width: 450px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.3); /* Slight transparency */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1; /* Keep form above the blurred background */
+    margin: 0 auto; /* This centers the form */
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input fields */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.6); /* Slight transparency */
+}
+
+/* Submit button */
+input[type="submit"] {
+    background-color: #770366;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #f89beb;
+}
+
+/* Admin Table Container */
+.admin-table-container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.3); /* Slight transparency */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1; /* Keep table above the blurred background */
+    margin: 0 auto; /* Center the container */
+    overflow-x: auto; /* Add horizontal scroll for small screens */
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blurred effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border-radius: 8px;
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+}
+
+table th {
+    background-color: #770366;
+    color: white;
+    font-weight: bold;
+}
+
+table tr:hover {
+    background-color: rgba(248, 155, 235, 0.1); /* Light hover effect */
+}
+
+/* Download links styles */
+.download-options {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.download-link {
+    background-color: #770366;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.download-link:hover {
+    background-color: #f89beb;
+}
+
+/* Logout button */
+.logout-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #770366;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #f89beb;
+}
+
+/* Review Details Page */
+.review-details {
+    width: 450px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.3); /* Slight transparency */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 20px auto;
+    text-align: left;
+}
+
+/* Review card */
+.review-card {
+    background: rgba(255, 255, 255, 0.6); /* Light transparent background */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-card p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #9F7BA9;
+    color: white;
+    position: absolute;
+    bottom: 0;
+}
+

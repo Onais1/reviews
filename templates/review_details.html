@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Full-screen background overlay -->
+    <div class="background-overlay"></div>
+
+    <!-- Main container for the review details -->
+    <div class="container">
+        <!-- Header section -->
+        <header>
+            <h1>Review Details Panel</h1>
+        </header>
+        
+        <!-- Review details section -->
+        <section class="review-details">
+            <h2>Review Information</h2>
+            <div class="review-card">
+                <p><strong>First Name:</strong> {{ review.firstName }}</p>
+                <p><strong>Last Name:</strong> {{ review.lastName }}</p>
+                <p><strong>Email:</strong> {{ review.email }}</p>
+                <p><strong>Date:</strong> {{ review.created_at.strftime('%Y-%m-%d') }}</p>
+                <p><strong>Review:</strong> {{ review.review }}</p>
+            </div>
+            <a href="{{ url_for('admin') }}" class="btn">Back to admin panel</a>
+        </section>
+    </div>
+
+    <!-- Footer section -->
+    <footer>
+        <p>&copy; 2025 Roller-Skates Inc. All rights reserved.</p>
+    </footer>
+</body>
+</html>
