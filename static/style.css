@@ -64,23 +64,23 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-    backdrop-filter: blur(15px); /* Blurred effect */
-    -webkit-backdrop-filter: blur(15px); /* Safari support */
-    z-index: -1; /* Keep it behind other elements */
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px); 
+    z-index: -1; 
 }
 
 /* Form container */
 .form-container {
     width: 450px;
     padding: 25px;
-    background: rgba(255, 255, 255, 0.3); /* Slight transparency */
+    background: rgba(255, 255, 255, 0.3); 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     position: relative;
-    z-index: 1; /* Keep form above the blurred background */
-    margin: 0 auto; /* This centers the form */
+    z-index: 1; 
+    margin: 0 auto; 
 }
 
 /* Form styling */
@@ -97,7 +97,7 @@ input, textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    background: rgba(255, 255, 255, 0.6); /* Slight transparency */
+    background: rgba(255, 255, 255, 0.6); 
 }
 
 /* Submit button */
@@ -120,31 +120,31 @@ input[type="submit"]:hover {
     width: 90%;
     max-width: 1200px;
     padding: 25px;
-    background: rgba(255, 255, 255, 0.3); /* Slight transparency */
+    background: rgba(255, 255, 255, 0.3);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     position: relative;
-    z-index: 1; /* Keep table above the blurred background */
-    margin: 0 auto; /* Center the container */
-    overflow-x: auto; /* Add horizontal scroll for small screens */
+    z-index: 1; 
+    margin: 0 auto; 
+    overflow-x: auto; 
 }
 
 /* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-    backdrop-filter: blur(10px); /* Blurred effect */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    background: rgba(255, 255, 255, 0.8); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
     border-radius: 8px;
-    overflow: hidden; /* Ensure rounded corners are visible */
+    overflow: hidden; 
 }
 
 table th, table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
 }
 
 table th {
@@ -154,7 +154,7 @@ table th {
 }
 
 table tr:hover {
-    background-color: rgba(248, 155, 235, 0.1); /* Light hover effect */
+    background-color: rgba(248, 155, 235, 0.1); 
 }
 
 /* Download links styles */
@@ -200,7 +200,7 @@ table tr:hover {
 .review-details {
     width: 450px;
     padding: 25px;
-    background: rgba(255, 255, 255, 0.3); /* Slight transparency */
+    background: rgba(255, 255, 255, 0.3); 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -210,7 +210,7 @@ table tr:hover {
 
 /* Review card */
 .review-card {
-    background: rgba(255, 255, 255, 0.6); /* Light transparent background */
+    background: rgba(255, 255, 255, 0.6); 
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);

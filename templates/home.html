@@ -7,7 +7,7 @@
     <title>Customer Review</title>
 </head>
 <body>
-    <!-- Full-screen blurred white background -->
+    
     <div class="background-overlay"></div>
 
     <header>
@@ -23,7 +23,7 @@
         <h1>Hi Roller-Skater!</h1>
         <h2>Leave a review of our online or in-store services.</h2>
 
-        <!-- Form Container with frosted glass effect -->
+        
         <div class="form-container">
             <form name="reviewForm" action="/submit" method="POST" onsubmit="return validateForm()">
                 <label for="firstName">First Name:</label>
@@ -61,17 +61,19 @@
             // Check if any field is empty
             if (firstName.trim() === "" || lastName.trim() === "" || email.trim() === "" || review.trim() === "") {
                 alert("Please fill in all fields.");
-                return false;  // Prevent form submission
+                // Prevent form submission
+                return false;  
             }
 
             // Validate email format
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             if (!emailPattern.test(email)) {
                 alert("Invalid email address.");
-                return false;  // Prevent form submission
+                // Prevent form submission
+                return false;  
             }
-
-            return true;  // Allow form submission
+            // Allow form submission
+            return true;  
         }
     </script>
 </body>

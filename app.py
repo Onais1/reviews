@@ -48,7 +48,7 @@ def load_user(user_id):
 
 @app.route("/")
 def home():
-    # Render the home page (home.html) as the default page
+    
     return render_template("home.html")
 
 @app.route("/update_reviews_timestamps")
@@ -132,7 +132,7 @@ def submit():
     db.session.add(new_review)
     db.session.commit()
 
-    return render_template("thanks.html")  # Render the thank you page with the styled template
+    return render_template("thanks.html")  
 
 
 @app.route('/download/csv')
@@ -168,5 +168,5 @@ def download_xls():
 
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()  # Ensure the database is created
+        db.create_all()  
     app.run(debug=True)
