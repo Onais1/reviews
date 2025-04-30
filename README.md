@@ -22,7 +22,8 @@ or download the folder to your local machine
 
 Set up a Venv:
 - Python -m venv venv
-- Source venv/bin/activate # On WindowsOS: venv\Script\activate
+- Source venv/bin/activate 
+On WindowsOS: venv\Scripts\activate
 
 - Install Required Dependencies:
 - pip install -r requirements.txt
