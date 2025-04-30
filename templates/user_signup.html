@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Admin Sign Up - The Skate Sanctuary</title>
+    <title>Sign Up - The Skate Sanctuary</title>
 </head>
 <body>
     <div class="background-overlay"></div>
-    <div class="form-container">
-        <h2>Admin Sign Up</h2>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <ul class="flash-messages">
@@ -19,17 +19,17 @@
                 </ul>
             {% endif %}
         {% endwith %}
-        <form action="{{ url_for('signup') }}" method="POST">
+        <form method="POST" action="{{ url_for('user_signup') }}">
             {{ form.hidden_tag() }}
-            <label for="username">Username</label>
+            <label for="username">Username:</label>
             {{ form.username(id="username", required=True) }}
-            <label for="password">Password</label>
+            <label for="password">Password:</label>
             {{ form.password(id="password", required=True) }}
-            <label for="confirm_password">Confirm Password</label>
+            <label for="confirm_password">Confirm Password:</label>
             {{ form.confirm_password(id="confirm_password", required=True) }}
             {{ form.submit() }}
         </form>
-        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+        <p>Already have an account? <a href="{{ url_for('user_login') }}">Log in here</a></p>
     </div>
     <footer>
         <p>&copy; 2025 The Skate Sanctuary. All rights reserved.</p>

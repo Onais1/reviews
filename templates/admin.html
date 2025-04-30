@@ -1,18 +1,16 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Admin Reviews</title>
+    <title>Admin Reviews - The Skate Sanctuary</title>
 </head>
 <body>
     <div class="background-overlay"></div>
     <div class="admin-table-container">
         <h1>Hello Admin</h1>
-        <h2>This is the Admin panel, you can view & download reviews.</h2>
-        
-        <!-- Flash messages for actions -->
+        <h2>This is the Admin panel, you can manage reviews here.</h2>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <ul class="flash-messages">
@@ -22,51 +20,56 @@
                 </ul>
             {% endif %}
         {% endwith %}
-        
-        <!-- Display reviews if available -->
         {% if reviews %}
-        <table class="reviews-table">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Review</th>
-                    <th>Date</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for review in reviews %}
-                <tr>
-                    <td>{{ review.firstName }}</td>
-                    <td>{{ review.lastName }}</td>
-                    <td>{{ review.email }}</td>
-                    <td>{{ review.review }}</td>
-                    <td>
-                        {% if review.created_at %}
-                            {{ review.created_at.strftime('%Y-%m-%d') }}
-                        {% else %}
-                            Unknown
-                        {% endif %}
-                    </td>
-                    <td><a href="{{ url_for('review_details', review_id=review.id) }}">View</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+            <table class="reviews-table">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Review</th>
+                        <th>Sentiment</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for review in reviews %}
+                        <tr>
+                            <td>{{ review.firstName }}</td>
+                            <td>{{ review.lastName }}</td>
+                            <td>{{ review.email }}</td>
+                            <td>{{ review.review }}</td>
+                            <td>{{ review.sentiment or 'N/A' }}</td>
+                            <td>
+                                {% if review.created_at %}
+                                    {{ review.created_at.strftime('%Y-%m-%d') }}
+                                {% else %}
+                                    Unknown
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ url_for('review_details', review_id=review.id) }}">View</a>
+                                <form action="{{ url_for('delete_review', review_id=review.id) }}" method="POST" style="display:inline;">
+                                    {{ delete_form.hidden_tag() }}
+                                    {{ delete_form.submit(class="delete-btn", onclick="return confirm('Confirm to delete review')") }}
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         {% else %}
-        <p>No reviews yet!</p>
+            <p>No reviews yet!</p>
         {% endif %}
-        
-        <!-- Download options -->
         <div class="download-options">
             <a href="{{ url_for('download_csv') }}" class="download-link">Download as CSV</a>
             <a href="{{ url_for('download_xls') }}" class="download-link">Download as XLS</a>
         </div>
-
-        <!-- Logout button -->
         <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
     </div>
+    <footer>
+        <p>&copy; 2025 The Skate Sanctuary. All rights reserved.</p>
+    </footer>
 </body>
 </html>

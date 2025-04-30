@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Newswire - The Skate Sanctuary</title>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="newswire-container">
+        <h1>Roller Girl Gang Newswire</h1>
+        <p>Read the latest feedback from our roller-skate community</p>
+        {% if current_user.is_authenticated %}
+            <p>Hey, {{ current_user.username }}! <a href="{{ url_for('user_logout') }}">Logout</a></p>
+        {% else %}
+            <p>Hey, Guest! <a href="{{ url_for('user_login') }}">Login</a></p>
+        {% endif %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        {% if reviews %}
+            {% for review in reviews %}
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-name">{{ review.user.username if review.user else 'Anonymous' }}</span>
+                        <span class="review-date">{{ review.created_at.strftime('%Y-%m-%d') }}</span>
+                    </div>
+                    <p class="review-text">{{ review.review }}</p>
+                    <div class="review-footer">
+                        <span class="review-sentiment">{{ review.sentiment or 'N/A' }}</span>
+                        <span class="review-likes">Likes: {{ review.likes }}</span>
+                        <span class="review-dislikes">Dislikes: {{ review.dislikes }}</span>
+                        <div class="interaction-btns">
+                            {% if current_user.is_authenticated and not current_user.is_admin %}
+                                <form action="{{ url_for('like_review', review_id=review.id) }}" method="POST" style="display:inline;">
+                                    {{ like_form.hidden_tag() }}
+                                    {{ like_form.submit(class="like-btn", value="Like") }}
+                                </form>
+                                <form action="{{ url_for('dislike_review', review_id=review.id) }}" method="POST" style="display:inline;">
+                                    {{ dislike_form.hidden_tag() }}
+                                    {{ dislike_form.submit(class="dislike-btn", value="Dislike") }}
+                                </form>
+                            {% else %}
+                                <span class="login-prompt">
+                                    {% if current_user.is_admin %}
+                                        Admins cannot like/dislike
+                                    {% else %}
+                                        Login to like or dislike
+                                    {% endif %}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No reviews available! Be the first to leave a review!</p>
+        {% endif %}
+        <a href="{{ url_for('home') }}" class="btn">Share your feedback!</a>
+    </div>
+    <footer>
+        <p>&copy; 2025 The Skate Sanctuary. All rights reserved.</p>
+    </footer>
+</body>
+</html>

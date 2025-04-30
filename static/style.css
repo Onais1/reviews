@@ -5,6 +5,33 @@
     box-sizing: border-box;
 }
 
+/* Body background and layout */
+body {
+    font-family: Arial, sans-serif;
+    background: url("/static/rollerskates.jpg") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    padding-top: 80px;
+    text-align: center;
+    color: #333;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Full-screen blurred white overlay */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: -1;
+}
+
 /* Header */
 header {
     background-color: #9F7BA9;
@@ -38,81 +65,152 @@ nav ul li a {
     transition: background-color 0.3s ease;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a:focus {
     background-color: #f89beb;
+    outline: none;
 }
 
-/* Body background */
-body {
-    font-family: Arial, sans-serif;
-    background: url("/static/rollerskates.jpg") no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding-top: 80px;
-    text-align: center;
-    color: #333;
-    position: relative;
+/* Headings */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #770366;
 }
 
-/* Full-screen blurred white overlay */
-.background-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1); 
-    backdrop-filter: blur(15px); 
-    -webkit-backdrop-filter: blur(15px); 
-    z-index: -1; 
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #9F7BA9;
 }
 
 /* Form container */
 .form-container {
-    width: 450px;
+    width: 90%;
+    max-width: 450px;
     padding: 25px;
-    background: rgba(255, 255, 255, 0.3); 
+    background: rgba(255, 255, 255, 0.3);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     position: relative;
-    z-index: 1; 
-    margin: 0 auto; 
+    z-index: 1;
+    margin: 20px auto;
 }
 
 /* Form styling */
 form {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 /* Input fields */
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    background: rgba(255, 255, 255, 0.6); 
+    background: rgba(255, 255, 255, 0.6);
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #770366;
+    outline: none;
 }
 
 /* Submit button */
-input[type="submit"] {
+input[type="submit"],
+button[type="submit"] {
     background-color: #770366;
     color: white;
     border: none;
     padding: 12px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+button[type="submit"]:hover,
+button[type="submit"]:focus {
     background-color: #f89beb;
+    outline: none;
+}
+
+/* Delete button */
+.delete-btn {
+    background-color: #f89beb;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover,
+.delete-btn:focus {
+    background-color: #770366;
+    outline: none;
+}
+
+/* Like and Dislike buttons */
+.like-btn,
+.dislike-btn {
+    background-color: #770366;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin: 0 5px;
+}
+
+.like-btn:hover,
+.like-btn:focus,
+.dislike-btn:hover,
+.dislike-btn:focus {
+    background-color: #f89beb;
+    outline: none;
+}
+
+/* Flash messages */
+.flash-messages {
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+}
+
+.flash-messages li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.flash-messages li.success {
+    background-color: #e0f7e9;
+    color: #2e7d32;
+}
+
+.flash-messages li.danger {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.flash-messages li.info {
+    background-color: #e3f2fd;
+    color: #1976d2;
 }
 
 /* Admin Table Container */
@@ -125,36 +223,35 @@ input[type="submit"]:hover {
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     position: relative;
-    z-index: 1; 
-    margin: 0 auto; 
-    overflow-x: auto; 
+    z-index: 1;
+    margin: 20px auto;
+    overflow-x: auto;
 }
 
 /* Table Styling */
-table {
+.reviews-table {
     width: 100%;
     border-collapse: collapse;
-    background: rgba(255, 255, 255, 0.8); 
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px); 
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
-table th, table td {
+.reviews-table th,
+.reviews-table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-table th {
+.reviews-table th {
     background-color: #770366;
     color: white;
     font-weight: bold;
 }
 
-table tr:hover {
-    background-color: rgba(248, 155, 235, 0.1); 
+.reviews-table tr:hover {
+    background-color: rgba(248, 155, 235, 0.1);
 }
 
 /* Download links styles */
@@ -163,7 +260,8 @@ table tr:hover {
     text-align: center;
 }
 
-.download-link {
+.download-link,
+.btn {
     background-color: #770366;
     color: white;
     padding: 12px 20px;
@@ -175,8 +273,12 @@ table tr:hover {
     transition: background-color 0.3s ease;
 }
 
-.download-link:hover {
+.download-link:hover,
+.download-link:focus,
+.btn:hover,
+.btn:focus {
     background-color: #f89beb;
+    outline: none;
 }
 
 /* Logout button */
@@ -192,15 +294,94 @@ table tr:hover {
     transition: background-color 0.3s ease;
 }
 
-.logout-btn:hover {
+.logout-btn:hover,
+.logout-btn:focus {
     background-color: #f89beb;
+    outline: none;
+}
+
+/* Newswire Container */
+.newswire-container {
+    width: 90%;
+    max-width: 800px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1;
+    margin: 20px auto;
+}
+
+/* Review card */
+.review-card {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.review-card p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.review-name {
+    font-weight: bold;
+    color: #770366;
+}
+
+.review-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.review-text {
+    margin-bottom: 10px;
+}
+
+.review-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-sentiment {
+    color: #9F7BA9;
+    font-style: italic;
+}
+
+.review-likes,
+.review-dislikes {
+    margin-right: 10px;
+    color: #333;
+}
+
+.interaction-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.login-prompt {
+    color: #d32f2f;
+    font-size: 0.9rem;
 }
 
 /* Review Details Page */
 .review-details {
-    width: 450px;
+    width: 90%;
+    max-width: 450px;
     padding: 25px;
-    background: rgba(255, 255, 255, 0.3); 
+    background: rgba(255, 255, 255, 0.3);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -208,17 +389,24 @@ table tr:hover {
     text-align: left;
 }
 
-/* Review card */
-.review-card {
-    background: rgba(255, 255, 255, 0.6); 
-    padding: 15px;
+/* Signup Container */
+.signup-container {
+    width: 90%;
+    max-width: 450px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1;
+    margin: 20px auto;
 }
 
-.review-card p {
-    margin-bottom: 10px;
-    font-size: 16px;
+/* Disabled state */
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 /* Footer */
@@ -228,7 +416,95 @@ footer {
     padding: 10px;
     background-color: #9F7BA9;
     color: white;
-    position: absolute;
-    bottom: 0;
+    margin-top: auto;
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
+    header {
+        padding: 5px 0;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav ul li a {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .form-container,
+    .admin-table-container,
+    .newswire-container,
+    .signup-container,
+    .review
+
+-details {
+        width: 95%;
+        padding: 15px;
+    }
+
+    input,
+    textarea {
+        font-size: 14px;
+    }
+
+    input[type="submit"],
+    button[type="submit"],
+    .download-link,
+    .logout-btn,
+    .btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .reviews-table th,
+    .reviews-table td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .review-card {
+        padding: 10px;
+    }
+
+    .review-card p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .review-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .interaction-btns {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .like-btn,
+    .dislike-btn {
+        width: 100%;
+        text-align: center;
+    }
+}

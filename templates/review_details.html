@@ -3,21 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Details</title>
+    <title>Review Details - The Skate Sanctuary</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    
     <div class="background-overlay"></div>
-
-    
     <div class="container">
-       
         <header>
             <h1>Review Details Panel</h1>
         </header>
-        
-       
         <section class="review-details">
             <h2>Review Information</h2>
             <div class="review-card">
@@ -26,14 +20,13 @@
                 <p><strong>Email:</strong> {{ review.email }}</p>
                 <p><strong>Date:</strong> {{ review.created_at.strftime('%Y-%m-%d') }}</p>
                 <p><strong>Review:</strong> {{ review.review }}</p>
+                <p><strong>Sentiment:</strong> {{ review.sentiment or 'N/A' }}</p>
             </div>
             <a href="{{ url_for('admin') }}" class="btn">Back to admin panel</a>
         </section>
     </div>
-
-    
     <footer>
-        <p>&copy; 2025 Roller-Skates Inc. All rights reserved.</p>
+        <p>&copy; 2025 The Skate Sanctuary. All rights reserved.</p>
     </footer>
 </body>
 </html>

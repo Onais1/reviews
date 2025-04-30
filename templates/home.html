@@ -4,43 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Customer Review</title>
+    <title>Customer Review - The Skate Sanctuary</title>
 </head>
 <body>
-    
     <div class="background-overlay"></div>
 
     <header>
         <nav>
             <ul>
-        
-                <li><a href="/login" class="button">Admin Login</a></li>
+                <li><a href="{{ url_for('user_login') }}">User Login</a></li>
+                <li><a href="{{ url_for('login') }}">Admin Login</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <h1>Hi Roller-Skater!</h1>
-        <h2>Leave a review of our online or in-store services.</h2>
-
-        
-        <div class="form-container">
-            <form name="reviewForm" action="/submit" method="POST" onsubmit="return validateForm()">
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required>
-
-                <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="review">Review:</label>
-                <textarea id="review" name="review" required></textarea>
-
-                <input type="submit" value="Submit">
-            </form>
-        </div>
+        {% if current_user.is_authenticated %}
+            <h2>Leave a review of our online or in-store services.</h2>
+            <div class="form-container">
+                <form name="reviewForm" action="{{ url_for('submit') }}" method="POST" onsubmit="return validateForm()">
+                    {{ form.hidden_tag() }}
+                    <label for="firstName">First Name:</label>
+                    {{ form.firstName(id="firstName", required=True) }}
+                    <label for="lastName">Last Name:</label>
+                    {{ form.lastName(id="lastName", required=True) }}
+                    <label for="email">Email:</label>
+                    {{ form.email(id="email", required=True) }}
+                    <label for="review">Review:</label>
+                    {{ form.review(id="review", required=True) }}
+                    {{ form.submit() }}
+                </form>
+            </div>
+        {% else %}
+            <h2>Please <a href="{{ url_for('user_login') }}">log in</a> to leave a review.</h2>
+        {% endif %}
     </main>
 
     <footer>
@@ -49,31 +47,23 @@
 
     <script>
         function validateForm() {
-            // Get form reference
             const form = document.forms["reviewForm"];
-
-            // Get input values correctly
             const firstName = form["firstName"].value;
             const lastName = form["lastName"].value;
             const email = form["email"].value;
             const review = form["review"].value;
 
-            // Check if any field is empty
             if (firstName.trim() === "" || lastName.trim() === "" || email.trim() === "" || review.trim() === "") {
                 alert("Please fill in all fields.");
-                // Prevent form submission
-                return false;  
+                return false;
             }
 
-            // Validate email format
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             if (!emailPattern.test(email)) {
                 alert("Invalid email address.");
-                // Prevent form submission
-                return false;  
+                return false;
             }
-            // Allow form submission
-            return true;  
+            return true;
         }
     </script>
 </body>
