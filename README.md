@@ -18,7 +18,7 @@ INSTALLATION GUIDE:
 Setup Instructions are as follows.
 
 - Clone the repo (git):
-or copy the folder to your local machine
+or download the folder to your local machine
 
 Set up a Venv:
 - Python -m venv venv
