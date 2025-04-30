@@ -21,26 +21,26 @@ Setup Instructions are as follows...
 or copy the folder to your local machine
 
 -Set up a Venv:
-I. python -m venv venv
-II. source venv/bin/activate # On WindowsOS: venv\Script\activate
+- Python -m venv venv
+- Source venv/bin/activate # On WindowsOS: venv\Script\activate
 
 - Install Required Dependencies:
-I. pip install -r requirements.txt
+- pip install -r requirements.txt
 
 - IMPORTANT! - Run the Setup Script File:
 (This script will create the database and apply mitigations.)
-I. setup.py (python file)
+- setup.py (python file)
 
 - Run the App (from project root or any directory via bash):
-I. Project root:
-II. cd/path/to/com6023-project
-III. flask run --debug
+- Project root:
+- cd/path/to/com6023-project
+- flask run --debug
 
 Any directory:
-I. flask --app/path/to/com6023-project/app:app run --debug
+- flask --app/path/to/com6023-project/app:app run --debug
 
 WindowsOS example:
-I. flask --app C:/path/to/com6023-project/app:app run --debug
+- flask --app C:/path/to/com6023-project/app:app run --debug
 
 Linux/MacOS example:
 flask --app/home/user/com6023-project/app:app run --debug
