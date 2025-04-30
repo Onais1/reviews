@@ -15,12 +15,12 @@ FEATURES:
 
 INSTALLATION GUIDE:
 
-Setup Instructions are as follows...
+Setup Instructions are as follows.
 
 - Clone the repo (git):
 or copy the folder to your local machine
 
--Set up a Venv:
+Set up a Venv:
 - Python -m venv venv
 - Source venv/bin/activate # On WindowsOS: venv\Script\activate
 
@@ -43,7 +43,7 @@ WindowsOS example:
 - flask --app C:/path/to/com6023-project/app:app run --debug
 
 Linux/MacOS example:
-flask --app/home/user/com6023-project/app:app run --debug
+- flask --app/home/user/com6023-project/app:app run --debug
 
 Advisories:
 - The data URI in app.py is set dynamically, so the app works on any machine.
