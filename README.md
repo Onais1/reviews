@@ -17,8 +17,8 @@ INSTALLATION GUIDE:
 
 Setup Instructions are as follows.
 
-- Clone the repo (git):
-or download the folder to your local machine
+- Clone the repo (git): https://github.com/Onais1/reviews.git
+(or download the folder to your local machine)
 
 Set up a Venv:
 - Python -m venv venv
