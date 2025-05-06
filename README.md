@@ -20,7 +20,7 @@ Setup Instructions are as follows.
 - Clone the repo (git): https://github.com/Onais1/reviews.git
 (or download the folder to your local machine)
 
-Set up a Venv:
+- Set up a Virtual Environment inside project directory:
 - Python -m venv venv
 - Source venv/bin/activate 
 On WindowsOS: venv\Scripts\activate
@@ -37,7 +37,7 @@ On WindowsOS: venv\Scripts\activate
 - cd/path/to/com6023-project
 - flask run --debug
 
-Any directory:
+- Any directory:
 - flask --app/path/to/com6023-project/app:app run --debug
 
 WindowsOS example:
