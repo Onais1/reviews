@@ -1,4 +1,4 @@
-The Skate Sanctuary - Roller Girl Gang Feedbak App
+The Skate Sanctuary - Roller Girl Gang Feedback App
 
 A robust FLask web app for collecting and managing customer feedback.
 
